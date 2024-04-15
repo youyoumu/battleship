@@ -4,13 +4,17 @@
   "description": "Implementation of game Battleship using Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^7.1.1",
     "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.3",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }
