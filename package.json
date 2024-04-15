@@ -4,7 +4,7 @@
   "description": "Implementation of game Battleship using Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "tailwind": "tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "globals": "^15.0.0",
     "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.3",
     "webpack": "^5.91.0",
