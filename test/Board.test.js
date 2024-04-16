@@ -63,7 +63,30 @@ describe('Board', () => {
     expect(() => board.hitCoordinate(0, 1)).toThrow(
       /Already hit that empty spot/
     )
-    board.print()
-    s1.print()
+  })
+
+  it('can check if all ships are sunk', () => {
+    const s1 = new Ship(5, 1, false)
+    const s2 = new Ship(5, 1, true)
+
+    const board = new Board(10, 10, [s1, s2])
+    board.placeShip(0, 0, 0)
+    board.placeShip(0, 1, 1)
+    board.hitCoordinate(0, 1)
+    expect(board.allShipsSunk()).toBe(false)
+    board.hitCoordinate(0, 2)
+    board.hitCoordinate(0, 3)
+    board.hitCoordinate(0, 4)
+    board.hitCoordinate(0, 5)
+    expect(board.allShipsSunk()).toBe(false)
+    expect(s2.isSunk).toBe(true)
+
+    board.hitCoordinate(0, 0)
+    board.hitCoordinate(1, 0)
+    board.hitCoordinate(2, 0)
+    board.hitCoordinate(3, 0)
+    board.hitCoordinate(4, 0)
+    expect(s1.isSunk).toBe(true)
+    expect(board.allShipsSunk()).toBe(true)
   })
 })
