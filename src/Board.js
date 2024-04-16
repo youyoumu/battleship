@@ -62,8 +62,6 @@ class Board {
       return false
     } else if (this.board[y][x] === false) {
       throw new Error('Already hit that empty spot in that location')
-    } else if (this.board[y][x] === true) {
-      throw new Error('Already hit that ship in that location')
     } else {
       let shipCoordX = null
       let shipCoordY = null
@@ -73,6 +71,10 @@ class Board {
       } else {
         shipCoordX = x - this.board[y][x].coords[0]
         shipCoordY = y - this.board[y][x].coords[1]
+      }
+
+      if (this.board[y][x].body[shipCoordY][shipCoordX] === false) {
+        throw new Error('Already hit that ship in that location')
       }
 
       this.board[y][x].takeHit(shipCoordX, shipCoordY)

@@ -54,6 +54,15 @@ describe('Board', () => {
     board.placeShip(0, 0, 0)
     board.hitCoordinate(0, 0)
     expect(s1.body[0][0]).toBe(false)
+
+    expect(() => board.hitCoordinate(0, 0)).toThrow(
+      /Already hit that ship in that location/
+    )
+
+    board.hitCoordinate(0, 1)
+    expect(() => board.hitCoordinate(0, 1)).toThrow(
+      /Already hit that empty spot/
+    )
     board.print()
     s1.print()
   })
