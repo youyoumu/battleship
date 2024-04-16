@@ -5,8 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
   </head>
-  <body>
-    <h1>Battleship</h1>
-    <button class="btn"></button>
+  <body class="p-4">
+    <h1 class="text-5xl text-center">Battleship</h1>
+    <button class="btn" onclick="settings.showModal()">Settings</button>
+    <dialog id="settings" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-lg">Settings</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="mx-auto">
+          <label for="board-width" class="label label-text">Board Width</label>
+          <input
+            id="board-width"
+            type="range"
+            min="10"
+            max="30"
+            value="10"
+            class="range"
+          />
+          <label for="board-height" class="label label-text"
+            >Board Height</label
+          >
+          <input
+            id="board-height"
+            type="range"
+            min="10"
+            max="30"
+            value="10"
+            class="range"
+          />
+          <label for="pvp" class="label cursor-pointer">
+            <span class="label-text">PVP</span>
+            <input id="pvp" type="checkbox" class="toggle" />
+          </label>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- ship 1 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 1</h2>
+              <label for="ship-1-length" class="label label-text">Length</label>
+              <input
+                id="ship-1-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-1-width" class="label label-text">Width</label>
+              <input
+                id="ship-1-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-1-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-1-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 2 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 2</h2>
+              <label for="ship-2-length" class="label label-text">Length</label>
+              <input
+                id="ship-2-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-2-width" class="label label-text">Width</label>
+              <input
+                id="ship-2-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-2-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-2-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 3 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 3</h2>
+              <label for="ship-3-length" class="label label-text">Length</label>
+              <input
+                id="ship-3-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-3-width" class="label label-text">Width</label>
+              <input
+                id="ship-3-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-3-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-3-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 4 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 4</h2>
+              <label for="ship-4-length" class="label label-text">Length</label>
+              <input
+                id="ship-4-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-4-width" class="label label-text">Width</label>
+              <input
+                id="ship-4-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-4-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-4-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 5 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 5</h2>
+              <label for="ship-5-length" class="label label-text">Length</label>
+              <input
+                id="ship-5-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-5-width" class="label label-text">Width</label>
+              <input
+                id="ship-5-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-5-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-5-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 6 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 6</h2>
+              <label for="ship-6-length" class="label label-text">Length</label>
+              <input
+                id="ship-6-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-6-width" class="label label-text">Width</label>
+              <input
+                id="ship-6-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-6-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-6-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>
