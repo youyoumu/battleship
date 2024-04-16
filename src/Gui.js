@@ -4,6 +4,9 @@ class Gui {
     this.boardHeight = document.getElementById('board-height')
     this.pvp = document.getElementById('pvp')
 
+    this.pvcPlayerBoard = document.getElementById('pvc-player-board')
+    this.pvcComputerBoard = document.getElementById('pvc-computer-board')
+
     this.ship1Length = document.getElementById('ship-1-length')
     this.ship1Width = document.getElementById('ship-1-width')
     this.ship1Orientation = document.getElementById('ship-1-orientation')
@@ -27,6 +30,10 @@ class Gui {
     this.ship6Length = document.getElementById('ship-6-length')
     this.ship6Width = document.getElementById('ship-6-width')
     this.ship6Orientation = document.getElementById('ship-6-orientation')
+  }
+
+  printBoard(boardElement, board) {
+    boardElement.innerHTML = ''
   }
 }
 
