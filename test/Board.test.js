@@ -22,7 +22,8 @@ describe('Board', () => {
     const s1 = new Ship(5, 1, false)
     const s2 = new Ship(5, 1, true)
     const s3 = new Ship(5, 1, true)
-    const board = new Board(10, 10, [s1, s2, s3])
+    const s4 = new Ship(10, 2, true)
+    const board = new Board(10, 10, [s1, s2, s3, s4])
     board.placeShip(0, 0, 0)
     expect(board.board[0][0]).toBe(s1)
     expect(board.board[0][1]).toBe(s1)
@@ -43,6 +44,7 @@ describe('Board', () => {
 
     expect(() => board.placeShip(0, 9, 2)).toThrow(/Out of bounds/)
 
+    board.placeShip(8, 0, 3)
     board.print()
   })
 })
