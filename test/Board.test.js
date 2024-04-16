@@ -35,5 +35,6 @@ describe('Board', () => {
     expect(board.board[3][0]).toBe(s2)
     expect(board.board[4][0]).toBe(s2)
     expect(board.board[5][0]).toBe(s2)
+    board.print()
   })
 })

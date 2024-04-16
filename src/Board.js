@@ -29,5 +29,9 @@ class Board {
       }
     }
   }
+
+  print() {
+    console.table(this.board)
+  }
 }
 export default Board
