@@ -21,7 +21,8 @@ describe('Board', () => {
   it('can place ships on board', () => {
     const s1 = new Ship(5, 1, false)
     const s2 = new Ship(5, 1, true)
-    const board = new Board(10, 10, [s1, s2])
+    const s3 = new Ship(5, 1, true)
+    const board = new Board(10, 10, [s1, s2, s3])
     board.placeShip(0, 0, 0)
     expect(board.board[0][0]).toBe(s1)
     expect(board.board[0][1]).toBe(s1)
@@ -35,6 +36,13 @@ describe('Board', () => {
     expect(board.board[3][0]).toBe(s2)
     expect(board.board[4][0]).toBe(s2)
     expect(board.board[5][0]).toBe(s2)
+
+    expect(() => board.placeShip(0, 1, 1)).toThrow(
+      /Ship cannot be placed on top of another ship/
+    )
+
+    expect(() => board.placeShip(0, 9, 2)).toThrow(/Out of bounds/)
+
     board.print()
   })
 })
