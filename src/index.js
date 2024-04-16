@@ -1,3 +1,5 @@
+import Game from './Game.js'
 import './output.css'
 
-console.log('Hello, World!')
+const game = new Game()
+game.start()
