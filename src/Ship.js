@@ -6,6 +6,7 @@ class Ship {
     this.isSunk = false
     this.maxHp = this.length * this.width
     this.hp = this.maxHp
+    this.coords = null
 
     this.body = []
     const row = []
@@ -18,11 +19,15 @@ class Ship {
   }
 
   takeHit(x, y) {
-    this.body[x][y] = false
+    this.body[y][x] = false
     this.hp--
     if (this.hp === 0) {
       this.isSunk = true
     }
+  }
+
+  print() {
+    console.table(this.body)
   }
 }
 export default Ship

@@ -45,6 +45,16 @@ describe('Board', () => {
     expect(() => board.placeShip(0, 9, 2)).toThrow(/Out of bounds/)
 
     board.placeShip(8, 0, 3)
+  })
+
+  it('can hit coordinates', () => {
+    const s1 = new Ship(5, 1, false)
+
+    const board = new Board(10, 10, [s1])
+    board.placeShip(0, 0, 0)
+    board.hitCoordinate(0, 0)
+    expect(s1.body[0][0]).toBe(false)
     board.print()
+    s1.print()
   })
 })
