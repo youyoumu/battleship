@@ -5,7 +5,9 @@ class Gui {
     this.pvp = document.getElementById('pvp')
 
     this.pvcPlayerBoard = document.getElementById('pvc-player-board')
+    this.pvcPlayerName = document.getElementById('pvc-player-name')
     this.pvcComputerBoard = document.getElementById('pvc-computer-board')
+    this.pvcComputerName = document.getElementById('pvc-computer-name')
 
     this.ship1Length = document.getElementById('ship-1-length')
     this.ship1Width = document.getElementById('ship-1-width')
@@ -66,6 +68,10 @@ class Gui {
     this.pvcPlayerBoard.style.gridTemplateRows = `repeat(${this.boardHeight.value}, 1fr)`
     this.pvcComputerBoard.style.gridTemplateColumns = `repeat(${this.boardWidth.value}, 1fr)`
     this.pvcComputerBoard.style.gridTemplateRows = `repeat(${this.boardHeight.value}, 1fr)`
+  }
+
+  printName(nameElement, name) {
+    nameElement.innerHTML = name
   }
 }
 

@@ -43,7 +43,7 @@ class Game {
       ]
     )
     this.player2 = new Player(
-      'Player 2',
+      'Computer',
       this.gui.boardWidth.value,
       this.gui.boardHeight.value,
       [
@@ -82,14 +82,15 @@ class Game {
   }
 
   start() {
-    console.log(this.player1, this.player2)
-    this.player1.board.placeShip(0, 0, 0)
-    this.player1.board.placeShip(0, 2, 1)
-    this.player1.board.hitCoordinate(0, 0)
-    this.player1.board.hitCoordinate(0, 4)
+    this.gui.printName(this.gui.pvcPlayerName, this.player1.name)
     this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
+
+    this.gui.printName(this.gui.pvcComputerName, this.player2.name)
+    this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
   }
+
+  prepare() {}
 }
 
 export default Game
