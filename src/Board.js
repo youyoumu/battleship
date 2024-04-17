@@ -12,14 +12,22 @@ class Board {
     for (let i = 0; i < height; i++) {
       this.board.push([...row])
     }
+    this.mockBoard = null
   }
 
-  placeShip(x, y, index) {
+  placeShip(x, y, index, mock = false) {
+    if (mock) {
+      this.createMockBoard()
+    }
     if (this.ships[index].orientation) {
       for (let i = 0; i < this.ships[index].length; i++) {
         for (let j = 0; j < this.ships[index].width; j++) {
           this.validateCoordinates(x + j, y + i)
-          this.board[y + i][x + j] = this.ships[index]
+          if (mock) {
+            this.mockBoard[y + i][x + j] = this.ships[index]
+          } else {
+            this.board[y + i][x + j] = this.ships[index]
+          }
         }
       }
       this.ships[index].coords = [x, y]
@@ -27,7 +35,11 @@ class Board {
       for (let i = 0; i < this.ships[index].width; i++) {
         for (let j = 0; j < this.ships[index].length; j++) {
           this.validateCoordinates(x + j, y + i)
-          this.board[y + i][x + j] = this.ships[index]
+          if (mock) {
+            this.mockBoard[y + i][x + j] = this.ships[index]
+          } else {
+            this.board[y + i][x + j] = this.ships[index]
+          }
         }
       }
       this.ships[index].coords = [x, y]
@@ -80,6 +92,18 @@ class Board {
       this.board[y][x].takeHit(shipCoordX, shipCoordY)
       return true
     }
+  }
+
+  createMockBoard() {
+    this.mockBoard = []
+    let mockRow = []
+    this.board.forEach((row) => {
+      row.forEach((cell) => {
+        mockRow.push(cell)
+      })
+      this.mockBoard.push(mockRow)
+      mockRow = []
+    })
   }
 }
 export default Board

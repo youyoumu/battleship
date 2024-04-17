@@ -7,74 +7,74 @@ class Game {
     this.gui = new Gui()
     this.player1 = new Player(
       'Player 1',
-      this.gui.boardWidth.value,
-      this.gui.boardHeight.value,
+      parseInt(this.gui.boardWidth.value),
+      parseInt(this.gui.boardHeight.value),
       [
         new Ship(
-          this.gui.ship1Length.value,
-          this.gui.ship1Width.value,
+          parseInt(this.gui.ship1Length.value),
+          parseInt(this.gui.ship1Width.value),
           this.gui.ship1Orientation.checked
         ),
         new Ship(
-          this.gui.ship2Length.value,
-          this.gui.ship2Width.value,
+          parseInt(this.gui.ship2Length.value),
+          parseInt(this.gui.ship2Width.value),
           this.gui.ship2Orientation.checked
         ),
         new Ship(
-          this.gui.ship3Length.value,
-          this.gui.ship3Width.value,
+          parseInt(this.gui.ship3Length.value),
+          parseInt(this.gui.ship3Width.value),
           this.gui.ship3Orientation.checked
         ),
         new Ship(
-          this.gui.ship4Length.value,
-          this.gui.ship4Width.value,
+          parseInt(this.gui.ship4Length.value),
+          parseInt(this.gui.ship4Width.value),
           this.gui.ship4Orientation.checked
         ),
         new Ship(
-          this.gui.ship5Length.value,
-          this.gui.ship5Width.value,
+          parseInt(this.gui.ship5Length.value),
+          parseInt(this.gui.ship5Width.value),
           this.gui.ship5Orientation.checked
         ),
         new Ship(
-          this.gui.ship6Length.value,
-          this.gui.ship6Width.value,
+          parseInt(this.gui.ship6Length.value),
+          parseInt(this.gui.ship6Width.value),
           this.gui.ship6Orientation.checked
         )
       ]
     )
     this.player2 = new Player(
       'Computer',
-      this.gui.boardWidth.value,
-      this.gui.boardHeight.value,
+      parseInt(this.gui.boardWidth.value),
+      parseInt(this.gui.boardHeight.value),
       [
         new Ship(
-          this.gui.ship1Length.value,
-          this.gui.ship1Width.value,
+          parseInt(this.gui.ship1Length.value),
+          parseInt(this.gui.ship1Width.value),
           this.gui.ship1Orientation.checked
         ),
         new Ship(
-          this.gui.ship2Length.value,
-          this.gui.ship2Width.value,
+          parseInt(this.gui.ship2Length.value),
+          parseInt(this.gui.ship2Width.value),
           this.gui.ship2Orientation.checked
         ),
         new Ship(
-          this.gui.ship3Length.value,
-          this.gui.ship3Width.value,
+          parseInt(this.gui.ship3Length.value),
+          parseInt(this.gui.ship3Width.value),
           this.gui.ship3Orientation.checked
         ),
         new Ship(
-          this.gui.ship4Length.value,
-          this.gui.ship4Width.value,
+          parseInt(this.gui.ship4Length.value),
+          parseInt(this.gui.ship4Width.value),
           this.gui.ship4Orientation.checked
         ),
         new Ship(
-          this.gui.ship5Length.value,
-          this.gui.ship5Width.value,
+          parseInt(this.gui.ship5Length.value),
+          parseInt(this.gui.ship5Width.value),
           this.gui.ship5Orientation.checked
         ),
         new Ship(
-          this.gui.ship6Length.value,
-          this.gui.ship6Width.value,
+          parseInt(this.gui.ship6Length.value),
+          parseInt(this.gui.ship6Width.value),
           this.gui.ship6Orientation.checked
         )
       ]
@@ -98,7 +98,48 @@ class Game {
   arrangeCallback(e, game) {
     const x = parseInt(e.target.dataset.x)
     const y = parseInt(e.target.dataset.y)
-    console.table(game.player1.board.board)
+    const index = parseInt(game.gui.shipSelect.value)
+    const ship = game.player1.board.ships[index]
+    const shipLength = ship.length
+    const shipWidth = ship.width
+
+    if (ship.orientation) {
+      if (
+        x + shipWidth <= game.player1.board.width &&
+        y + shipLength <= game.player1.board.height
+      ) {
+        let overlap = false
+        for (let i = 0; i < shipLength; i++) {
+          for (let j = 0; j < shipWidth; j++) {
+            if (game.player1.board.board[y + i][x + j] !== null) {
+              overlap = true
+            }
+          }
+        }
+        if (!overlap) {
+          game.player1.board.placeShip(x, y, index, true)
+        }
+      }
+    } else {
+      if (
+        x + shipLength <= game.player1.board.width &&
+        y + shipWidth <= game.player1.board.height
+      ) {
+        let overlap = false
+        for (let i = 0; i < shipWidth; i++) {
+          for (let j = 0; j < shipLength; j++) {
+            if (game.player1.board.board[y + i][x + j] !== null) {
+              overlap = true
+            }
+          }
+        }
+        if (!overlap) {
+          game.player1.board.placeShip(x, y, index, true)
+        }
+      }
+    }
+    console.table(game.player1.board.mockBoard)
+    game.gui.reprintBoard(game.gui.pvcPlayerBoard, game.player1.board)
   }
 }
 

@@ -223,14 +223,13 @@
     </dialog>
     <div id="game-container">
       <div id="ship-list" class="flex justify-center mb-4">
-        <select class="select select-bordered w-full max-w-xs">
-          <option disabled selected>Select ship</option>
-          <option>Ship 1</option>
-          <option>Ship 2</option>
-          <option>Ship 3</option>
-          <option>Ship 4</option>
-          <option>Ship 5</option>
-          <option>Ship 6</option>
+        <select id="ship-select" class="select select-bordered w-full max-w-xs">
+          <option value="0" selected>Ship 1</option>
+          <option value="1">Ship 2</option>
+          <option value="2">Ship 3</option>
+          <option value="3">Ship 4</option>
+          <option value="4">Ship 5</option>
+          <option value="5">Ship 6</option>
         </select>
       </div>
       <div id="pvc-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
