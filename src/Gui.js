@@ -60,6 +60,8 @@ class Gui {
         } else if (board.board[i][j] === false) {
           cell.classList.add('miss')
         }
+        cell.dataset.x = j
+        cell.dataset.y = i
         boardElement.appendChild(cell)
       }
     }
@@ -74,6 +76,13 @@ class Gui {
 
   printName(nameElement, name) {
     nameElement.innerHTML = name
+  }
+
+  arrangeShips(callback, game) {
+    const cells = this.pvcPlayerBoard.childNodes
+    cells.forEach((cell) => {
+      cell.addEventListener('mouseover', (e) => callback(e, game))
+    })
   }
 }
 

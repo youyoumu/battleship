@@ -82,17 +82,23 @@ class Game {
   }
 
   start() {
-    this.prepare()
     this.gui.printName(this.gui.pvcPlayerName, this.player1.name)
     this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
 
     this.gui.printName(this.gui.pvcComputerName, this.player2.name)
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
+    this.prepare()
   }
 
   prepare() {
-    console.log(this.gui.shipSelect.value)
+    this.gui.arrangeShips(this.arrangeCallback, this)
+  }
+
+  arrangeCallback(e, game) {
+    const x = parseInt(e.target.dataset.x)
+    const y = parseInt(e.target.dataset.y)
+    console.table(game.player1.board.board)
   }
 }
 
