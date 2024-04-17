@@ -4,6 +4,8 @@ class Gui {
     this.boardHeight = document.getElementById('board-height')
     this.pvp = document.getElementById('pvp')
 
+    this.shipSelect = document.getElementById('ship-select')
+
     this.pvcPlayerBoard = document.getElementById('pvc-player-board')
     this.pvcPlayerName = document.getElementById('pvc-player-name')
     this.pvcComputerBoard = document.getElementById('pvc-computer-board')

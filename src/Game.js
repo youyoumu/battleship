@@ -82,6 +82,7 @@ class Game {
   }
 
   start() {
+    this.prepare()
     this.gui.printName(this.gui.pvcPlayerName, this.player1.name)
     this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
 
@@ -90,7 +91,9 @@ class Game {
     this.gui.setGridSize()
   }
 
-  prepare() {}
+  prepare() {
+    console.log(this.gui.shipSelect.value)
+  }
 }
 
 export default Game
