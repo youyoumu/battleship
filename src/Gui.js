@@ -34,6 +34,38 @@ class Gui {
 
   printBoard(boardElement, board) {
     boardElement.innerHTML = ''
+    for (let i = 0; i < board.height; i++) {
+      for (let j = 0; j < board.width; j++) {
+        const cell = document.createElement('div')
+        cell.classList.add('cell')
+        if (board.board[i][j]) {
+          cell.classList.add('ship')
+          if (board.board[i][j].orientation) {
+            const shipCoordY = j - board.board[i][j].coords[0]
+            const shipCoordX = i - board.board[i][j].coords[1]
+            if (board.board[i][j].body[shipCoordY][shipCoordX] === false) {
+              cell.classList.add('hit')
+            }
+          } else {
+            const shipCoordX = j - board.board[i][j].coords[0]
+            const shipCoordY = i - board.board[i][j].coords[1]
+            if (board.board[i][j].body[shipCoordY][shipCoordX] === false) {
+              cell.classList.add('hit')
+            }
+          }
+        } else if (board.board[i][j] === false) {
+          cell.classList.add('miss')
+        }
+        boardElement.appendChild(cell)
+      }
+    }
+  }
+
+  setGridSize() {
+    this.pvcPlayerBoard.style.gridTemplateColumns = `repeat(${this.boardWidth.value}, 1fr)`
+    this.pvcPlayerBoard.style.gridTemplateRows = `repeat(${this.boardHeight.value}, 1fr)`
+    this.pvcComputerBoard.style.gridTemplateColumns = `repeat(${this.boardWidth.value}, 1fr)`
+    this.pvcComputerBoard.style.gridTemplateRows = `repeat(${this.boardHeight.value}, 1fr)`
   }
 }
 

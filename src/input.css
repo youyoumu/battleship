@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cell {
+  background-color: darkslateblue;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ship {
+  background-color: gray;
+}
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: aliceblue;
+}
