@@ -148,6 +148,11 @@ class Game {
     const index = parseInt(game.gui.shipSelect.value)
 
     game.player1.board.placeShip(x, y, index)
+    if (game.gui.shipSelect.selectedIndex < 5) {
+      game.gui.shipSelect.selectedIndex = game.gui.shipSelect.selectedIndex + 1
+    } else {
+      game.gui.printBoard(game.gui.pvcPlayerBoard, game.player1.board)
+    }
   }
 }
 
