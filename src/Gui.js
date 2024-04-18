@@ -86,6 +86,9 @@ class Gui {
   }
 
   reprintBoard(boardElement, board) {
+    if (board.mockBoard === null) {
+      return
+    }
     const cells = boardElement.childNodes
     for (let i = 0; i < board.height; i++) {
       for (let j = 0; j < board.width; j++) {
