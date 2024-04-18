@@ -92,10 +92,10 @@ class Game {
   }
 
   prepare() {
-    this.gui.arrangeShips(this.arrangeCallback, this)
+    this.gui.arrangeShips(this.hoverCallback, this)
   }
 
-  arrangeCallback(e, game) {
+  hoverCallback(e, game) {
     const x = parseInt(e.target.dataset.x)
     const y = parseInt(e.target.dataset.y)
     const index = parseInt(game.gui.shipSelect.value)
