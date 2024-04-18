@@ -92,7 +92,7 @@ class Game {
   }
 
   prepare() {
-    this.gui.arrangeShips(this.hoverCallback, this)
+    this.gui.arrangeShips(this.hoverCallback, this.clickCallback, this)
   }
 
   hoverCallback(e, game) {
@@ -140,6 +140,14 @@ class Game {
     }
     console.table(game.player1.board.mockBoard)
     game.gui.reprintBoard(game.gui.pvcPlayerBoard, game.player1.board)
+  }
+
+  clickCallback(e, game) {
+    const x = parseInt(e.target.dataset.x)
+    const y = parseInt(e.target.dataset.y)
+    const index = parseInt(game.gui.shipSelect.value)
+
+    game.player1.board.placeShip(x, y, index)
   }
 }
 

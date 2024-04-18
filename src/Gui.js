@@ -78,10 +78,13 @@ class Gui {
     nameElement.innerHTML = name
   }
 
-  arrangeShips(hoverCallback, game) {
+  arrangeShips(hoverCallback, clickCallback, game) {
     const cells = this.pvcPlayerBoard.childNodes
     cells.forEach((cell) => {
       cell.addEventListener('mouseover', (e) => hoverCallback(e, game))
+    })
+    cells.forEach((cell) => {
+      cell.addEventListener('click', (e) => clickCallback(e, game))
     })
   }
 
