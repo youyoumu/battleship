@@ -29,6 +29,18 @@ class Player {
       // if (enemy.isLost()) {
       //   game.endGame()
       // }
+      enemy.computerAttack(player, game)
+    }
+  }
+
+  computerAttack(player, game) {
+    const x = Math.floor(Math.random() * this.board.width)
+    const y = Math.floor(Math.random() * this.board.height)
+
+    if (!this.attackedCoords.includes([x, y])) {
+      this.attackedCoords.push([x, y])
+      player.board.hitCoordinate(x, y)
+      game.gui.printBoard(game.gui.pvcPlayerBoard, player.board)
     }
   }
 }
