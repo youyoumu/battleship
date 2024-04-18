@@ -9,5 +9,9 @@ class Player {
   isLost() {
     return this.board.allShipsSunk()
   }
+
+  attack(player) {
+    console.log('attacking')
+  }
 }
 export default Player

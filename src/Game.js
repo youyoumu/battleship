@@ -4,6 +4,8 @@ import Ship from './Ship.js'
 
 class Game {
   constructor() {
+    this.ready = false
+    this.coordsForComputer = []
     this.gui = new Gui()
     this.player1 = new Player(
       'Player 1',
@@ -88,7 +90,13 @@ class Game {
     this.gui.printName(this.gui.pvcComputerName, this.player2.name)
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
-    this.prepare()
+    if (this.ready) {
+      this.placeComputerShips(this.coordsForComputer)
+      console.table(this.player2.board.board)
+      this.player1.attack(this.player2)
+    } else {
+      this.prepare()
+    }
   }
 
   prepare() {
@@ -138,7 +146,6 @@ class Game {
         }
       }
     }
-    console.table(game.player1.board.mockBoard)
     game.gui.reprintBoard(game.gui.pvcPlayerBoard, game.player1.board)
   }
 
@@ -148,10 +155,18 @@ class Game {
     const index = parseInt(game.gui.shipSelect.value)
 
     game.player1.board.placeShip(x, y, index)
+    game.coordsForComputer.push([x, y])
     if (game.gui.shipSelect.selectedIndex < 5) {
       game.gui.shipSelect.selectedIndex = game.gui.shipSelect.selectedIndex + 1
     } else {
-      game.gui.printBoard(game.gui.pvcPlayerBoard, game.player1.board)
+      game.ready = true
+      game.start()
+    }
+  }
+
+  placeComputerShips(coords) {
+    for (let i = 0; i < coords.length; i++) {
+      this.player2.board.placeShip(coords[i][0], coords[i][1], i)
     }
   }
 }
