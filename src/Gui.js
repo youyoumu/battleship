@@ -103,6 +103,15 @@ class Gui {
       }
     }
   }
+
+  attackShips(clickCallback, game, enemy, player) {
+    const cells = this.pvcComputerBoard.childNodes
+    cells.forEach((cell) => {
+      cell.addEventListener('click', (e) =>
+        clickCallback(e, game, enemy, player)
+      )
+    })
+  }
 }
 
 export default Gui

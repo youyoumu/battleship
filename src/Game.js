@@ -93,7 +93,7 @@ class Game {
     if (this.ready) {
       this.placeComputerShips(this.coordsForComputer)
       console.table(this.player2.board.board)
-      this.player1.attack(this.player2)
+      this.player1.attack(this.player2, this)
     } else {
       this.prepare()
     }
