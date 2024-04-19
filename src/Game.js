@@ -252,7 +252,7 @@ class Game {
   }
 
   endGame(player) {
-    this.gui.showToast(`Game over, ${player.name} won!`)
+    this.gui.showToast(`Game over! ${player.name} wins!`)
     this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
   }
@@ -261,7 +261,7 @@ class Game {
     let index = 0
     let counter = 0
     const maxCounter = this.player2.board.width * this.player2.board.height
-    while (index < 5 && counter < maxCounter) {
+    while (index < 6 && counter < maxCounter) {
       const x = Math.floor(Math.random() * this.player2.board.width)
       const y = Math.floor(Math.random() * this.player2.board.height)
       const ship = this.player2.board.ships[index]
