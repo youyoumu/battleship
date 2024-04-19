@@ -8,6 +8,7 @@ class Game {
     this.coordsForComputer = []
     this.shipsIndexForComputer = []
     this.gui = new Gui()
+    this.mirror = this.gui.mirror.checked
     this.player1 = new Player(
       'Player 1',
       parseInt(this.gui.boardWidth.value),
@@ -92,11 +93,14 @@ class Game {
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
     if (this.ready) {
-      // this.placeComputerShips(
-      //   this.coordsForComputer,
-      //   this.shipsIndexForComputer
-      // )
-      this.placeComputerShipsRandomly()
+      if (this.mirror) {
+        this.placeComputerShips(
+          this.coordsForComputer,
+          this.shipsIndexForComputer
+        )
+      } else {
+        this.placeComputerShipsRandomly()
+      }
       console.table(this.player2.board.board)
       this.player1.attack(this.player2, this)
       this.gui.showToast('Game started')
