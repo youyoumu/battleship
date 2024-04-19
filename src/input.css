@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 .cell {
-  background-color: darkslateblue;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  @apply bg-primary;
+  border: 0.25px solid rgba(0, 0, 0, 0.08);
 }
 
 .ship {
-  background-color: gray;
+  @apply bg-neutral;
 }
 
 .hit {
-  background-color: red;
+  @apply bg-error;
 }
 
 .miss {
-  background-color: aliceblue;
+  @apply bg-warning;
 }
