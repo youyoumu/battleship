@@ -1,5 +1,13 @@
+import oof from './sfx/oof.mp3'
+import newOof from './sfx/new-oof.mp3'
+import miss from './sfx/miss.wav'
+
 class Gui {
   constructor() {
+    this.oof = new Audio(oof)
+    this.newOof = new Audio(newOof)
+    this.miss = new Audio(miss)
+
     this.boardWidth = document.getElementById('board-width')
     this.boardHeight = document.getElementById('board-height')
     this.pvp = document.getElementById('pvp')
@@ -134,6 +142,18 @@ class Gui {
       this.toast.classList.add('invisible')
       this.toast.classList.add('inactive')
     }, 3000)
+  }
+
+  playOof() {
+    this.oof.play()
+  }
+
+  playNewOof() {
+    this.newOof.play()
+  }
+
+  playMiss() {
+    this.miss.play()
   }
 }
 

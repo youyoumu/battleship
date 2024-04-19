@@ -26,8 +26,10 @@ class Player {
       player.attackedCoords.push([x, y])
       if (enemy.board.hitCoordinate(x, y)) {
         e.target.classList.add('hit')
+        game.gui.playNewOof()
       } else {
         e.target.classList.add('miss')
+        game.gui.playMiss()
       }
       if (enemy.isLost()) {
         game.endGame(player)
@@ -46,8 +48,11 @@ class Player {
     if (!attackedCoordsString.includes(`[${x}, ${y}]`)) {
       this.attackedCoords.push([x, y])
 
-      if (!player.board.hitCoordinate(x, y) && game.unfair) {
-        this.computerAttack(player, game)
+      if (player.board.hitCoordinate(x, y)) {
+        game.gui.playOof()
+        if (game.unfair) {
+          this.computerAttack(player, game)
+        }
       }
       game.gui.printBoard(game.gui.pvcPlayerBoard, player.board)
       if (player.isLost()) {
