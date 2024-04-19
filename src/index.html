@@ -3,11 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Battleship</title>
   </head>
-  <body class="p-4">
+  <body class="p-4 play-regular">
     <div class="flex justify-between mb-6 mx-4">
-      <h1 class="text-5xl text-center">Battleship</h1>
+      <h1 class="text-5xl text-center dela-gothic-one-regular">Battleship</h1>
       <button class="btn" onclick="settings.showModal()">Settings</button>
     </div>
     <dialog id="settings" class="modal">
@@ -263,14 +273,14 @@
           <h2 id="pvc-player-name" class="text-center text-xl mb-4"></h2>
           <div
             id="pvc-player-board"
-            class="grid aspect-square rounded-md p-2 border-solid border-2"
+            class="grid aspect-square rounded-md p-2 border-solid border-2 bg-neutral-content"
           ></div>
         </div>
         <div id="pvc-computer-container">
           <h2 id="pvc-computer-name" class="text-center text-xl mb-4"></h2>
           <div
             id="pvc-computer-board"
-            class="grid aspect-square rounded-md p-2 border-solid border-2"
+            class="grid aspect-square rounded-md p-2 border-solid border-2 bg-neutral-content"
           ></div>
         </div>
       </div>
