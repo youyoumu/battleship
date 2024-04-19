@@ -169,6 +169,10 @@ class Game {
       this.player2.board.placeShip(coords[i][0], coords[i][1], i)
     }
   }
+
+  endGame(player) {
+    console.log(`${player.name} wins!`)
+  }
 }
 
 export default Game

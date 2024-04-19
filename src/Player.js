@@ -29,9 +29,9 @@ class Player {
       } else {
         e.target.classList.add('miss')
       }
-      // if (enemy.isLost()) {
-      //   game.endGame()
-      // }
+      if (enemy.isLost()) {
+        game.endGame(player)
+      }
       enemy.computerAttack(player, game)
     }
   }
