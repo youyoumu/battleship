@@ -6,6 +6,7 @@ class Game {
   constructor() {
     this.ready = false
     this.coordsForComputer = []
+    this.shipsIndexForComputer = []
     this.gui = new Gui()
     this.player1 = new Player(
       'Player 1',
@@ -91,7 +92,10 @@ class Game {
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
     if (this.ready) {
-      this.placeComputerShips(this.coordsForComputer)
+      this.placeComputerShips(
+        this.coordsForComputer,
+        this.shipsIndexForComputer
+      )
       console.table(this.player2.board.board)
       this.player1.attack(this.player2, this)
       this.gui.showToast('Game started')
@@ -174,6 +178,7 @@ class Game {
         if (!overlap) {
           game.player1.board.placeShip(x, y, index)
           game.coordsForComputer.push([x, y])
+          game.shipsIndexForComputer.push(index)
           if (game.gui.shipSelect.selectedIndex < 5) {
             game.gui.shipSelect.selectedIndex =
               game.gui.shipSelect.selectedIndex + 1
@@ -199,6 +204,7 @@ class Game {
         if (!overlap) {
           game.player1.board.placeShip(x, y, index)
           game.coordsForComputer.push([x, y])
+          game.shipsIndexForComputer.push(index)
           if (game.gui.shipSelect.selectedIndex < 5) {
             game.gui.shipSelect.selectedIndex =
               game.gui.shipSelect.selectedIndex + 1
@@ -211,9 +217,9 @@ class Game {
     }
   }
 
-  placeComputerShips(coords) {
+  placeComputerShips(coords, shipsIndex) {
     for (let i = 0; i < coords.length; i++) {
-      this.player2.board.placeShip(coords[i][0], coords[i][1], i)
+      this.player2.board.placeShip(coords[i][0], coords[i][1], shipsIndex[i])
     }
   }
 
