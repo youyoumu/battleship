@@ -127,5 +127,16 @@ class Board {
       }
     }
   }
+
+  resetBoard() {
+    this.board = []
+    const row = []
+    for (let i = 0; i < this.width; i++) {
+      row.push(null)
+    }
+    for (let i = 0; i < this.height; i++) {
+      this.board.push([...row])
+    }
+  }
 }
 export default Board

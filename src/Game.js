@@ -92,10 +92,11 @@ class Game {
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
     this.gui.setGridSize()
     if (this.ready) {
-      this.placeComputerShips(
-        this.coordsForComputer,
-        this.shipsIndexForComputer
-      )
+      // this.placeComputerShips(
+      //   this.coordsForComputer,
+      //   this.shipsIndexForComputer
+      // )
+      this.placeComputerShipsRandomly()
       console.table(this.player2.board.board)
       this.player1.attack(this.player2, this)
       this.gui.showToast('Game started')
@@ -249,6 +250,66 @@ class Game {
     this.gui.showToast(`Game over, ${player.name} won!`)
     this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
     this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
+  }
+
+  placeComputerShipsRandomly() {
+    let index = 0
+    let counter = 0
+    const maxCounter = this.player2.board.width * this.player2.board.height
+    while (index < 5 && counter < maxCounter) {
+      const x = Math.floor(Math.random() * this.player2.board.width)
+      const y = Math.floor(Math.random() * this.player2.board.height)
+      const ship = this.player2.board.ships[index]
+      const game = this
+      const shipLength = ship.length
+      const shipWidth = ship.width
+
+      if (ship.orientation) {
+        if (
+          x + shipWidth <= game.player2.board.width &&
+          y + shipLength <= game.player2.board.height
+        ) {
+          let overlap = false
+          for (let i = 0; i < shipLength; i++) {
+            for (let j = 0; j < shipWidth; j++) {
+              if (game.player2.board.board[y + i][x + j] !== null) {
+                overlap = true
+              }
+            }
+          }
+          if (!overlap) {
+            game.player2.board.placeShip(x, y, index)
+            index++
+          }
+        }
+      } else {
+        if (
+          x + shipLength <= game.player2.board.width &&
+          y + shipWidth <= game.player2.board.height
+        ) {
+          let overlap = false
+          for (let i = 0; i < shipWidth; i++) {
+            for (let j = 0; j < shipLength; j++) {
+              if (game.player2.board.board[y + i][x + j] !== null) {
+                overlap = true
+              }
+            }
+          }
+          if (!overlap) {
+            game.player2.board.placeShip(x, y, index)
+            index++
+          }
+        }
+      }
+      counter++
+    }
+    if (counter === maxCounter) {
+      console.log(
+        'Could not place all ships randomly after 100 attempts. Resetting board and trying again...'
+      )
+      this.player2.board.resetBoard()
+      this.placeComputerShipsRandomly()
+    }
   }
 }
 
