@@ -34,7 +34,9 @@ class Player {
       if (enemy.isLost()) {
         game.endGame(player)
       }
-      enemy.computerAttack(player, game)
+      setTimeout(() => {
+        enemy.computerAttack(player, game)
+      }, 200)
     }
   }
 
