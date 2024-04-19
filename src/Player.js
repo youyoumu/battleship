@@ -47,6 +47,9 @@ class Player {
       this.attackedCoords.push([x, y])
       player.board.hitCoordinate(x, y)
       game.gui.printBoard(game.gui.pvcPlayerBoard, player.board)
+      if (player.isLost()) {
+        game.endGame(this)
+      }
     } else {
       this.computerAttack(player, game)
     }
