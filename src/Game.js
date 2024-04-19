@@ -179,9 +179,16 @@ class Game {
           game.player1.board.placeShip(x, y, index)
           game.coordsForComputer.push([x, y])
           game.shipsIndexForComputer.push(index)
-          if (game.gui.shipSelect.selectedIndex < 5) {
-            game.gui.shipSelect.selectedIndex =
-              game.gui.shipSelect.selectedIndex + 1
+          if (game.coordsForComputer.length < 6) {
+            game.gui.shipSelect[
+              game.gui.shipSelect.selectedIndex
+            ].disabled = true
+            for (let i = 0; i < game.gui.shipSelect.length; i++) {
+              if (!game.gui.shipSelect[i].disabled) {
+                game.gui.shipSelect.selectedIndex = i
+                break
+              }
+            }
           } else {
             game.ready = true
             game.start()
@@ -205,9 +212,16 @@ class Game {
           game.player1.board.placeShip(x, y, index)
           game.coordsForComputer.push([x, y])
           game.shipsIndexForComputer.push(index)
-          if (game.gui.shipSelect.selectedIndex < 5) {
-            game.gui.shipSelect.selectedIndex =
-              game.gui.shipSelect.selectedIndex + 1
+          if (game.coordsForComputer.length < 6) {
+            game.gui.shipSelect[
+              game.gui.shipSelect.selectedIndex
+            ].disabled = true
+            for (let i = 0; i < game.gui.shipSelect.length; i++) {
+              if (!game.gui.shipSelect[i].disabled) {
+                game.gui.shipSelect.selectedIndex = i
+                break
+              }
+            }
           } else {
             game.ready = true
             game.start()
