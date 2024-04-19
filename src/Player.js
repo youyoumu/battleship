@@ -18,8 +18,11 @@ class Player {
   attackCallback(e, game, enemy, player) {
     const x = parseInt(e.target.dataset.x)
     const y = parseInt(e.target.dataset.y)
+    const attackedCoordsString = player.attackedCoords.map((coord) => {
+      return `[${coord[0]}, ${coord[1]}]`
+    })
 
-    if (!player.attackedCoords.includes([x, y])) {
+    if (!attackedCoordsString.includes(`[${x}, ${y}]`)) {
       player.attackedCoords.push([x, y])
       if (enemy.board.hitCoordinate(x, y)) {
         e.target.classList.add('hit')
@@ -36,8 +39,11 @@ class Player {
   computerAttack(player, game) {
     const x = Math.floor(Math.random() * this.board.width)
     const y = Math.floor(Math.random() * this.board.height)
+    const attackedCoordsString = this.attackedCoords.map((coord) => {
+      return `[${coord[0]}, ${coord[1]}]`
+    })
 
-    if (!this.attackedCoords.includes([x, y])) {
+    if (!attackedCoordsString.includes(`[${x}, ${y}]`)) {
       this.attackedCoords.push([x, y])
       player.board.hitCoordinate(x, y)
       game.gui.printBoard(game.gui.pvcPlayerBoard, player.board)
