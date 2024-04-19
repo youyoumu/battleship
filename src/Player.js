@@ -52,9 +52,8 @@ class Player {
 
       if (player.board.hitCoordinate(x, y)) {
         game.gui.playOof()
-        if (game.unfair) {
-          this.computerAttack(player, game)
-        }
+      } else if (game.unfair) {
+        this.computerAttack(player, game)
       }
       game.gui.printBoard(game.gui.pvcPlayerBoard, player.board)
       if (player.isLost()) {
