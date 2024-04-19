@@ -7,6 +7,10 @@
   border: 0.25px solid rgba(0, 0, 0, 0.08);
 }
 
+.cell:hover {
+  border: 0.25px solid rgba(0, 0, 0, 0.5);
+}
+
 .ship {
   @apply bg-neutral;
 }
