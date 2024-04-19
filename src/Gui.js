@@ -8,6 +8,9 @@ class Gui {
     this.toastMessage = document.getElementById('toast-message')
     this.shipSelect = document.getElementById('ship-select')
     this.shipSelect.selectedIndex = 0
+    for (let i = 0; i < this.shipSelect.options.length; i++) {
+      this.shipSelect.options[i].disabled = false
+    }
 
     this.pvcPlayerBoard = document.getElementById('pvc-player-board')
     this.pvcPlayerName = document.getElementById('pvc-player-name')
