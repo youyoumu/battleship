@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Battleship</title>
+  <script defer src="main.js"></script></head>
+  <body class="p-4 play-regular">
+    <div class="flex justify-between mb-6 mx-4">
+      <h1 class="text-5xl text-center dela-gothic-one-regular">Battleship</h1>
+      <button class="btn" onclick="settings.showModal()">Settings</button>
+    </div>
+    <dialog id="settings" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-lg">Settings</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="mx-auto">
+          <label for="board-width" class="label label-text">Board Width</label>
+          <input
+            id="board-width"
+            type="range"
+            min="10"
+            max="30"
+            value="12"
+            class="range"
+          />
+          <label for="board-height" class="label label-text"
+            >Board Height</label
+          >
+          <input
+            id="board-height"
+            type="range"
+            min="10"
+            max="30"
+            value="12"
+            class="range"
+          />
+          <label for="pvp" class="label cursor-pointer">
+            <span class="label-text">PVP</span>
+            <input id="pvp" type="checkbox" class="toggle" />
+          </label>
+          <label for="mirror" class="label cursor-pointer">
+            <span class="label-text">Mirror Mode</span>
+            <input id="mirror" type="checkbox" class="toggle" />
+          </label>
+          <label for="unfair" class="label cursor-pointer">
+            <span class="label-text">Unfair Mode</span>
+            <input id="unfair" type="checkbox" class="toggle" />
+          </label>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- ship 1 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 1</h2>
+              <label for="ship-1-length" class="label label-text">Length</label>
+              <input
+                id="ship-1-length"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                class="range"
+              />
+              <label for="ship-1-width" class="label label-text">Width</label>
+              <input
+                id="ship-1-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-1-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-1-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 2 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 2</h2>
+              <label for="ship-2-length" class="label label-text">Length</label>
+              <input
+                id="ship-2-length"
+                type="range"
+                min="1"
+                max="10"
+                value="4"
+                class="range"
+              />
+              <label for="ship-2-width" class="label label-text">Width</label>
+              <input
+                id="ship-2-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-2-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input
+                  id="ship-2-orientation"
+                  type="checkbox"
+                  class="toggle"
+                  checked
+                />
+              </label>
+            </div>
+          </div>
+          <!-- ship 3 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 3</h2>
+              <label for="ship-3-length" class="label label-text">Length</label>
+              <input
+                id="ship-3-length"
+                type="range"
+                min="1"
+                max="10"
+                value="2"
+                class="range"
+              />
+              <label for="ship-3-width" class="label label-text">Width</label>
+              <input
+                id="ship-3-width"
+                type="range"
+                min="1"
+                max="4"
+                value="2"
+                class="range"
+              />
+              <label for="ship-3-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-3-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 4 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 4</h2>
+              <label for="ship-4-length" class="label label-text">Length</label>
+              <input
+                id="ship-4-length"
+                type="range"
+                min="1"
+                max="10"
+                value="4"
+                class="range"
+              />
+              <label for="ship-4-width" class="label label-text">Width</label>
+              <input
+                id="ship-4-width"
+                type="range"
+                min="1"
+                max="4"
+                value="2"
+                class="range"
+              />
+              <label for="ship-4-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input id="ship-4-orientation" type="checkbox" class="toggle" />
+              </label>
+            </div>
+          </div>
+          <!-- ship 5 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 5</h2>
+              <label for="ship-5-length" class="label label-text">Length</label>
+              <input
+                id="ship-5-length"
+                type="range"
+                min="1"
+                max="10"
+                value="7"
+                class="range"
+              />
+              <label for="ship-5-width" class="label label-text">Width</label>
+              <input
+                id="ship-5-width"
+                type="range"
+                min="1"
+                max="4"
+                value="1"
+                class="range"
+              />
+              <label for="ship-5-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input
+                  id="ship-5-orientation"
+                  type="checkbox"
+                  class="toggle"
+                  checked
+                />
+              </label>
+            </div>
+          </div>
+          <!-- ship 6 -->
+          <div class="card bg-base-100 shadow-xl">
+            <figure></figure>
+            <div class="card-body">
+              <h2 class="card-title">Ship 6</h2>
+              <label for="ship-6-length" class="label label-text">Length</label>
+              <input
+                id="ship-6-length"
+                type="range"
+                min="1"
+                max="10"
+                value="3"
+                class="range"
+              />
+              <label for="ship-6-width" class="label label-text">Width</label>
+              <input
+                id="ship-6-width"
+                type="range"
+                min="1"
+                max="4"
+                value="2"
+                class="range"
+              />
+              <label for="ship-6-orientation" class="label cursor-pointer">
+                <span class="label-text">Vertical</span>
+                <input
+                  id="ship-6-orientation"
+                  type="checkbox"
+                  class="toggle"
+                  checked
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button id="reset-game" class="btn">Reset Game</button>
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <div id="game-container" class="max-w-6xl mx-auto">
+      <div id="ship-list" class="flex justify-center mb-4">
+        <select id="ship-select" class="select select-bordered w-full max-w-xs">
+          <option value="0" selected>Ship 1</option>
+          <option value="1">Ship 2</option>
+          <option value="2">Ship 3</option>
+          <option value="3">Ship 4</option>
+          <option value="4">Ship 5</option>
+          <option value="5">Ship 6</option>
+        </select>
+      </div>
+      <div id="pvc-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="pvc-player-container">
+          <h2 id="pvc-player-name" class="text-center text-xl mb-4"></h2>
+          <div
+            id="pvc-player-board"
+            class="grid aspect-square rounded-md p-2 border-solid border-2 bg-neutral-content"
+          ></div>
+        </div>
+        <div id="pvc-computer-container">
+          <h2 id="pvc-computer-name" class="text-center text-xl mb-4"></h2>
+          <div
+            id="pvc-computer-board"
+            class="grid aspect-square rounded-md p-2 border-solid border-2 bg-neutral-content"
+          ></div>
+        </div>
+      </div>
+      <div id="pvp-container" hidden></div>
+    </div>
+    <div id="toast" class="toast invisible">
+      <div class="alert alert-info">
+        <span id="toast-message"></span>
+      </div>
+    </div>
+  </body>
+</html>
