@@ -9,6 +9,7 @@ class Game {
     this.shipsIndexForComputer = []
     this.gui = new Gui()
     this.mirror = this.gui.mirror.checked
+    this.unfair = this.gui.unfair.checked
     this.player1 = new Player(
       'Player 1',
       parseInt(this.gui.boardWidth.value),

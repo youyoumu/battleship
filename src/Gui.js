@@ -4,6 +4,7 @@ class Gui {
     this.boardHeight = document.getElementById('board-height')
     this.pvp = document.getElementById('pvp')
     this.mirror = document.getElementById('mirror')
+    this.unfair = document.getElementById('unfair')
 
     this.toast = document.getElementById('toast')
     this.toastMessage = document.getElementById('toast-message')
