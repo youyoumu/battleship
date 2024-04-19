@@ -105,5 +105,27 @@ class Board {
       mockRow = []
     })
   }
+
+  placeInvalidShips(x, y, index) {
+    this.createMockBoard()
+    if (this.ships[index].orientation) {
+      for (let i = 0; i < this.ships[index].length; i++) {
+        for (let j = 0; j < this.ships[index].width; j++) {
+          if (y + i < this.height && x + j < this.width) {
+            this.mockBoard[y + i][x + j] = 'invalid'
+          }
+        }
+      }
+      this.ships[index].coords = [x, y]
+    } else {
+      for (let i = 0; i < this.ships[index].width; i++) {
+        for (let j = 0; j < this.ships[index].length; j++) {
+          if (y + i < this.height && x + j < this.width) {
+            this.mockBoard[y + i][x + j] = 'invalid'
+          }
+        }
+      }
+    }
+  }
 }
 export default Board

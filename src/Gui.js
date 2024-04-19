@@ -101,9 +101,13 @@ class Gui {
     const cells = boardElement.childNodes
     for (let i = 0; i < board.height; i++) {
       for (let j = 0; j < board.width; j++) {
-        if (board.mockBoard[i][j]) {
+        if (board.mockBoard[i][j] === 'invalid') {
+          cells[i * board.width + j].classList.add('invalid')
+        } else if (board.mockBoard[i][j]) {
+          cells[i * board.width + j].classList.remove('invalid')
           cells[i * board.width + j].classList.add('ship')
         } else {
+          cells[i * board.width + j].classList.remove('invalid')
           cells[i * board.width + j].classList.remove('ship')
         }
       }

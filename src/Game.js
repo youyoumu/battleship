@@ -131,7 +131,11 @@ class Game {
         }
         if (!overlap) {
           game.player1.board.placeShip(x, y, index, true)
+        } else {
+          game.player1.board.placeInvalidShips(x, y, index)
         }
+      } else {
+        game.player1.board.placeInvalidShips(x, y, index)
       }
     } else {
       if (
@@ -148,7 +152,11 @@ class Game {
         }
         if (!overlap) {
           game.player1.board.placeShip(x, y, index, true)
+        } else {
+          game.player1.board.placeInvalidShips(x, y, index)
         }
+      } else {
+        game.player1.board.placeInvalidShips(x, y, index)
       }
     }
     game.gui.reprintBoard(game.gui.pvcPlayerBoard, game.player1.board)
