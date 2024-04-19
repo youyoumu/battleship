@@ -94,6 +94,7 @@ class Game {
       this.placeComputerShips(this.coordsForComputer)
       console.table(this.player2.board.board)
       this.player1.attack(this.player2, this)
+      this.gui.showToast('Game started')
     } else {
       this.prepare()
     }

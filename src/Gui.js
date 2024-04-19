@@ -4,6 +4,8 @@ class Gui {
     this.boardHeight = document.getElementById('board-height')
     this.pvp = document.getElementById('pvp')
 
+    this.toast = document.getElementById('toast')
+    this.toastMessage = document.getElementById('toast-message')
     this.shipSelect = document.getElementById('ship-select')
 
     this.pvcPlayerBoard = document.getElementById('pvc-player-board')
@@ -111,6 +113,16 @@ class Gui {
         clickCallback(e, game, enemy, player)
       )
     })
+  }
+
+  showToast(message) {
+    this.toastMessage.innerHTML = message
+    this.toast.classList.remove('invisible')
+    this.toast.classList.add('active')
+    setTimeout(() => {
+      this.toast.classList.add('invisible')
+      this.toast.classList.add('inactive')
+    }, 3000)
   }
 }
 
