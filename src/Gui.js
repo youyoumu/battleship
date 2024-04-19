@@ -7,6 +7,7 @@ class Gui {
     this.toast = document.getElementById('toast')
     this.toastMessage = document.getElementById('toast-message')
     this.shipSelect = document.getElementById('ship-select')
+    this.shipSelect.selectedIndex = 0
 
     this.pvcPlayerBoard = document.getElementById('pvc-player-board')
     this.pvcPlayerName = document.getElementById('pvc-player-name')
