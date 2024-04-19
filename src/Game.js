@@ -154,14 +154,60 @@ class Game {
     const x = parseInt(e.target.dataset.x)
     const y = parseInt(e.target.dataset.y)
     const index = parseInt(game.gui.shipSelect.value)
+    const ship = game.player1.board.ships[index]
+    const shipLength = ship.length
+    const shipWidth = ship.width
 
-    game.player1.board.placeShip(x, y, index)
-    game.coordsForComputer.push([x, y])
-    if (game.gui.shipSelect.selectedIndex < 5) {
-      game.gui.shipSelect.selectedIndex = game.gui.shipSelect.selectedIndex + 1
+    if (ship.orientation) {
+      if (
+        x + shipWidth <= game.player1.board.width &&
+        y + shipLength <= game.player1.board.height
+      ) {
+        let overlap = false
+        for (let i = 0; i < shipLength; i++) {
+          for (let j = 0; j < shipWidth; j++) {
+            if (game.player1.board.board[y + i][x + j] !== null) {
+              overlap = true
+            }
+          }
+        }
+        if (!overlap) {
+          game.player1.board.placeShip(x, y, index)
+          game.coordsForComputer.push([x, y])
+          if (game.gui.shipSelect.selectedIndex < 5) {
+            game.gui.shipSelect.selectedIndex =
+              game.gui.shipSelect.selectedIndex + 1
+          } else {
+            game.ready = true
+            game.start()
+          }
+        }
+      }
     } else {
-      game.ready = true
-      game.start()
+      if (
+        x + shipLength <= game.player1.board.width &&
+        y + shipWidth <= game.player1.board.height
+      ) {
+        let overlap = false
+        for (let i = 0; i < shipWidth; i++) {
+          for (let j = 0; j < shipLength; j++) {
+            if (game.player1.board.board[y + i][x + j] !== null) {
+              overlap = true
+            }
+          }
+        }
+        if (!overlap) {
+          game.player1.board.placeShip(x, y, index)
+          game.coordsForComputer.push([x, y])
+          if (game.gui.shipSelect.selectedIndex < 5) {
+            game.gui.shipSelect.selectedIndex =
+              game.gui.shipSelect.selectedIndex + 1
+          } else {
+            game.ready = true
+            game.start()
+          }
+        }
+      }
     }
   }
 
