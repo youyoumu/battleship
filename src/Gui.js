@@ -118,6 +118,7 @@ class Gui {
   showToast(message) {
     this.toastMessage.innerHTML = message
     this.toast.classList.remove('invisible')
+    this.toast.classList.remove('inactive')
     this.toast.classList.add('active')
     setTimeout(() => {
       this.toast.classList.add('invisible')

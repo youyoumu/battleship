@@ -218,7 +218,9 @@ class Game {
   }
 
   endGame(player) {
-    console.log(`${player.name} wins!`)
+    this.gui.showToast(`Game over, ${player.name} won!`)
+    this.gui.printBoard(this.gui.pvcPlayerBoard, this.player1.board)
+    this.gui.printBoard(this.gui.pvcComputerBoard, this.player2.board)
   }
 }
 
